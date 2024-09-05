@@ -153,10 +153,11 @@ contract Raffle is VRFConsumerBaseV2Plus {
         return s_players[indexOfPlayer];
     }
 
-    /**
-     * Setters
-     */
-    function setRaffleState(RaffleState state) external {
-        s_raffleState = state;
+    function getTimeStamp() external view returns (uint256) {
+        return s_startTimeStamp;
+    }
+
+    function getRecentWinner() external view returns (address) {
+        return s_winner;
     }
 }
