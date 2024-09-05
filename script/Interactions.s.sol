@@ -46,10 +46,11 @@ contract FundSubscription is Script, Constants {
         console.log("Funding subscription: ", subId);
         console.log("Using vrfCoordinator: ", vrfCoordinator);
         console.log("On chainId: ", block.chainid);
+        console.log("On chainId: ", address(VRFCoordinatorV2_5Mock(vrfCoordinator)));
 
         if (block.chainid == LOCAL_CHAIN_ID) {
             vm.startBroadcast();
-            VRFCoordinatorV2_5Mock(vrfCoordinator).fundSubscription(subId, AMOUNT);
+            VRFCoordinatorV2_5Mock(vrfCoordinator).fundSubscription(subId, AMOUNT * 10);
             vm.stopBroadcast();
         } else {
             vm.startBroadcast();
